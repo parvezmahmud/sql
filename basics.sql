@@ -18,6 +18,14 @@ MAXSIZE=maximum_size(can be in mb),
 FILEGROWTH=file_growth_on_each_entry
 )
 
+
+--SHOW DATABASE INFO
+EXECUTE sp_helpdb;
+
+--SHOW ALL TABLES IN A DATABASE
+EXEC sp_tables;
+
+
 -- USE DATABASE
 USE db_name;
 
@@ -34,10 +42,32 @@ INSERT INTO table_name(fields_to_insert_data_into)
 VALUES
 (values_mapped_according_to_the_fields);
 
---SHOW DATABASE INFO
-EXECUTE sp_helpdb;
+--UPDATE DATA FROM A TABLE
+UPDATE table_name
+SET field_name='new_data'
+WHERE condition;
 
---SHOW ALL TABLES IN A DATABASE
-EXEC sp_tables;
+--DELETE DATA
+DELETE FROM table_name
+WHERE condition;
+
+--ADD COLUMN
+ALTER table_name
+ADD column_name data_type;
+
+--ALTER COLUMN NAME
+EXEC sp_rename 'table.column_name', 'new_name', 'COLUMN';
+
+--DELETE A COLUMN
+ALTER table_name
+DROP COLUMN column_name;
+
+--DELETE A table
+DROP TABLE table_name
+
+--DELETE A DATABASE
+DROP DATABASE db_name;
+
+
 
 
